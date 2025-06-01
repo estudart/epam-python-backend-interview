@@ -1,0 +1,87 @@
+# EPAM Technical Interview Study Plan for Erico
+
+## 🎯 Goal: Prepare for EPAM’s 90-minute technical interview
+- ✅ Theoretical questions
+- ✅ Live coding tasks
+- ✅ Focus on Python, Bash, AWS, CI/CD, algorithms
+
+---
+
+## 🗓️ Study Plan (7 Days)
+
+### 📅 Day 1: Interview Process + Self-Evaluation
+- ✅ Read: [EPAM’s technical interview guide](https://engx.space/global/en/blog/technical-interview-questions-guide)
+- 📘 Review the job description carefully again
+- 🧠 Self-assess where you are strongest and weakest (e.g., Bash vs. Algorithms)
+
+---
+
+### 📅 Day 2: Data Structures & Algorithms (Python)
+- 🧠 Focus: Arrays, Hashmaps, Sets, Strings
+- 📘 Study:
+  - Time complexity (Big-O)
+  - Common patterns (two pointers, sliding window)
+- 🔗 Practice:
+  - [LeetCode Easy Problems](https://leetcode.com/problemset/all/?difficulty=Easy)
+  - Pick 3–5 problems (e.g., Two Sum, Contains Duplicate)
+
+---
+
+### 📅 Day 3: Algorithms Part 2 + Coding
+- 🧠 Focus: Sorting, Recursion, Greedy, Binary Search
+- 🔗 Practice:
+  - [LeetCode Medium](https://leetcode.com/problemset/all/?difficulty=Medium)
+  - Practice at least 3 real-time problems
+- 🧪 Simulate one timed 30-minute coding test (use [Excalidraw](https://excalidraw.com/) to draw time/space analysis)
+
+---
+
+### 📅 Day 4: Python & Bash Skills
+- 🧠 Python: list comprehensions, dict manipulation, file I/O, exceptions, decorators
+- 🧪 Bash:
+  - File manipulation
+  - Looping
+  - Environment variables
+- Practice:
+  - Write 3 Python functions from scratch
+  - Write 2 Bash scripts (e.g., log parser, env config)
+
+---
+
+### 📅 Day 5: CI/CD and AWS Tools
+- 🔧 Review:
+  - **CI/CD Tools**: Jenkins basics, GitHub Actions, Bamboo if possible
+  - **AWS**: IAM, Lambda, S3, EC2, CloudFormation vs Terraform vs CDK
+- Watch:
+  - [AWS CloudFormation Basics](https://www.youtube.com/watch?v=E11bYkWz4eI)
+  - [CI/CD Pipeline Explained](https://www.youtube.com/watch?v=1hHMwLxN6EM)
+
+---
+
+### 📅 Day 6: System Design + Self-Service Platform Concepts
+- Study:
+  - SDLC (full pipeline: code → test → deploy)
+  - Platform Engineering Principles
+- Prep 1–2 examples of self-service tools you've built
+- Review:
+  - Docker basics: image, container, Dockerfile
+  - Kubernetes architecture (high-level only)
+
+---
+
+### 📅 Day 7: Mock Interview + Review
+- 🔁 Review notes and tricky topics
+- 🤝 Ask a friend to do a 45-minute mock interview
+- 🧘‍♂️ Practice introducing yourself clearly:
+  - Your role
+  - Key projects
+  - Where you used AWS, CI/CD, Python, Bash
+
+---
+
+## 📌 Bonus Tips
+
+- Have a few **stories** ready using the **STAR format**:
+  - Situation, Task, Action, Result
+- Prepare 2–3 questions for your interviewer
+- Keep your environment ready: good internet, working mic + camera, no distractions
