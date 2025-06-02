@@ -49,21 +49,3 @@ def timeConversion(s):
 
 timeConversion(s)
 """
-s = "12:45:00AM"
-def timeConversion(s):
-    hour = int(s[:2])
-    rest = s[2:-2]
-    period = s[-2:]
-
-    if period == "AM":
-        if hour == 12:
-            hour = 0
-    else:  # PM
-        if hour != 12:
-            hour += 12
-
-    new_time = f"{hour:02d}{rest}"
-    print(new_time)
-    return new_time
-
-timeConversion(s)
