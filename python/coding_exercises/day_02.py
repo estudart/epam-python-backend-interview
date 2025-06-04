@@ -49,3 +49,16 @@ def timeConversion(s):
 
 timeConversion(s)
 """
+
+"""
+MOCK TEST
+def findMedian(arr: list):
+    len_arr = len(arr)
+    middle_index = int((len_arr/2))
+    print(middle_index)
+    arr.sort()
+    print(arr)
+    return arr[middle_index]
+arr = [1, 3, 5, 2, 7, 6, 4]
+print(findMedian(arr))
+"""
