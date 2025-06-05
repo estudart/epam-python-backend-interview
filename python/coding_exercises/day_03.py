@@ -173,4 +173,52 @@ def generate_mapped_alphabet(k, alphabet):
 caesarCipher(s, k)
 """
 
+"""
+def findZigZagSequence(a, n):
+    a.sort()
+    mid = int((n + 1)/2)
+    a[mid], a[n-1] = a[n-1], a[mid]
 
+    st = mid + 1
+    ed = n - 1
+    while(st <= ed):
+        a[st], a[ed] = a[ed], a[st]
+        st = st + 1
+        ed = ed + 1
+
+    for i in range (n):
+        if i == n-1:
+            print(a[i])
+        else:
+            print(a[i], end = ' ')
+    return
+"""
+
+"""
+s = "aaab"
+
+def palindromeIndex(s):
+    if s == s[::-1]:
+        return -1
+
+    left = 0
+    right = len(s) - 1
+
+    while left < right:
+        if s[left] != s[right]:
+            if s[left+1:right+1] == s[left+1:right+1][::-1]:
+                return left
+            elif s[left:right] == s[left:right][::-1]:
+                return right
+            else:
+                return -1    
+        left+=1
+        right-=1
+
+    return -1
+
+for s in ['reefer', "tanna", "atnna", "cilvic", "annas", "abc"]:
+    print(palindromeIndex(s))
+
+
+"""
