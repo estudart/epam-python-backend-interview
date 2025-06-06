@@ -248,13 +248,3 @@ What is the difference between '__new__' and '__init__' in Python?
 whenever a new intance of the class is created and the init method is called whenever
 this same class is initialized.
 """
-
-"""
-Question 22:
-What is the purpose of the `__call__` method in Python?
-"""
-
-"""
-Question 23:
-
-"""

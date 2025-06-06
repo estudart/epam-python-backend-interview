@@ -37,3 +37,12 @@ STOP COMANDS
 docker stop container_name
 docker stop container_id
 """
+
+"""
+DEBUG COMMANDS
+
+docker logs container_name
+
+How to open a bash terminal inside Docker?
+docker exec -it container_name bash
+"""
