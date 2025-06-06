@@ -50,34 +50,22 @@ print(superDigit(n, k))
 
 """
 
-q_1 = [5, 1, 2, 3, 7, 8, 6, 4]
+q_1 = [2, 1, 5, 3, 4]
 q_2 = [1, 2, 5, 3, 7, 8, 6, 4]
 
 
 def minimumBribes(q: list):
-    number_of_bribes = 0
-    latest_max = 0
-    missing_set = set()
-    passed_set = set()
-    
-    for n in range(len(q)-1):
-        if q[n] - q[n+1] > 2:
+    bribes = 0
+    for i in range(len(q)):
+        if q[i] - (i + 1) > 2:
             print("Too chaotic")
             return
-        elif q[n] - q[n+1] > 1:
-            for i in range(q[n] - q[n-1]):
-                print(q[n])
-                if q[n] not in passed_set:
-                    missing_set.add(q[n]-i-1)
-                    print(missing_set)
-        passed_set.add(q[n])
-        if q[n-1] in missing_set:
-            missing_set.remove(q[n-1])
-        
-        
-        
+        # Count how many people with higher numbers are in front of q[i]
+        for j in range(max(0, q[i] - 2), i):
+            if q[j] > q[i]:
+                bribes += 1
+    print(bribes)
 
-    print(number_of_bribes)
 
 minimumBribes(q_1)
 minimumBribes(q_2)
