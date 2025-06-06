@@ -92,7 +92,7 @@ single  file, making it easier to manage complex applications.
 
 Differences from Dockerfile:
 
-A Dockerfile is used to build a single Docker image by defining its layers and dependencies.
-Docker Compose is used to run and orchestrate multiple containers that may rely on each other 
+- A Dockerfile is used to build a single Docker image by defining its layers and dependencies.
+- Docker Compose is used to run and orchestrate multiple containers that may rely on each other 
 (e.g., a web app container and a database container).
 """
