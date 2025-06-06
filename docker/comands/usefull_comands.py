@@ -53,3 +53,9 @@ docker logs container_name
 How to open a bash terminal inside Docker?
 docker exec -it container_name bash
 """
+
+"""
+DOCKER COMPOSE
+
+docker-compose build --up
+"""
