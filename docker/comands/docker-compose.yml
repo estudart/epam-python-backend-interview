@@ -1,0 +1,41 @@
+version: "3"
+services:
+  trading-api:
+    build: ./hdx-trading-api/
+    container_name: hdx-trading-api
+    ports:
+      - 8000:8000
+    environment:
+      - REDIS_HOST=hdx-trading-redis
+      - REDIS_PORT=6379
+      
+  nonco-wss-trade:
+    build: ./hdx-nonco-trade-wss/
+    container_name: hdx-nonco-trade-wss
+    environment:
+      - REDIS_HOST=hdx-trading-redis
+  
+  feeder-wss:
+    build: ./hdx-feeder-wss/
+    container_name: hdx-feeder-wss
+    environment:
+      - REDIS_HOST=hdx-trading-redis
+
+  redis-consumer:
+    build: ./hdx-redis-consumer/
+    container_name: hdx-redis-consumer
+    environment:
+      - REDIS_HOST=hdx-trading-redis
+      - REDIS_QUEUE=message_queue
+      - INTERVAL=1
+  
+  redis-db:
+    image: redis:latest
+    container_name: hdx-trading-redis
+    ports:
+      - 6379:6379
+
+networks:
+  default:
+    name: hdx-trading-app
+    driver: bridge
