@@ -1,4 +1,11 @@
 """
+BUILD COMMANDS
+
+cd to the folder in which Dockerfile is located
+docker build -t image_name .
+"""
+
+"""
 RUN COMANDS
 Comands used to run a docker image
 
