@@ -1,4 +1,11 @@
 """
+BUILD COMMANDS
+
+cd to the folder in which Dockerfile is located
+docker build -t image_name .
+"""
+
+"""
 RUN COMANDS
 Comands used to run a docker image
 
@@ -45,4 +52,10 @@ docker logs container_name
 
 How to open a bash terminal inside Docker?
 docker exec -it container_name bash
+"""
+
+"""
+DOCKER COMPOSE
+
+docker-compose build --up
 """
