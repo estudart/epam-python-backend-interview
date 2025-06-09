@@ -24,4 +24,37 @@ def truckTour(petrolpumps):
 
 print(truckTour(petrolpumps))
 """
-    
+
+
+"""
+s = "{)[](}]}]}))}(())("
+def isBalanced(s):
+    if len(s) % 2 != 0:
+        return "NO"
+
+    opening_order = []
+
+    opening_brackets = ["{", "(", "["]
+
+    mapping_brackets = {
+        "}": "{",
+        ")": "(",
+        "]": "["
+    }
+
+    for i in range(len(s)):
+        if s[i] in opening_brackets:
+            opening_order.append(s[i])
+        else:
+            if len(opening_order) < 1:
+                return "NO"
+            elif opening_order[-1] == mapping_brackets[s[i]]:
+                opening_order.pop(-1)
+            else:
+                return "NO"
+
+    return "YES" if len(opening_order) == 0 else "NO"
+
+print(isBalanced(s))
+"""
+
