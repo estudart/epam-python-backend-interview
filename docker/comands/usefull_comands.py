@@ -59,3 +59,11 @@ DOCKER COMPOSE
 
 docker-compose build --up
 """
+
+"""
+DOCKER REPOSITORY
+
+docker login
+docker tag
+docker push 
+"""
