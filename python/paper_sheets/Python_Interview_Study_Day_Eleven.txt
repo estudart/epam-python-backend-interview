@@ -1,0 +1,644 @@
+
+Python Interview Study Guide - Day One
+1. Key Features of Python:
+Python is a high-level, interpreted programming language with several powerful features:
+- Easy to learn: Simple syntax, similar to English.
+- Dynamically typed: You don't need to declare variable types explicitly.
+- Object-Oriented: Supports classes and objects.
+- Rich Libraries: Includes modules for math, OS interaction, networking, web development, etc.
+- Community Support: Huge developer community and open-source packages.
+
+2. Python 2 vs Python 3:
+Python 3 is the present and future of Python development. Key differences include:
+- Print: Python 2: print "Hello", Python 3: print("Hello")
+- Integer Division: Python 2: 3/2 = 1, Python 3: 3/2 = 1.5
+- Unicode: Python 3 uses Unicode strings by default.
+- Library Support: Most modern libraries support Python 3 only.
+
+3. Python Data Types:
+Python provides several built-in data types:
+- Numeric Types: int, float, complex
+- Text Type: str
+- Boolean Type: bool (True or False)
+- Sequence Types: list (mutable), tuple (immutable), range
+- Mapping Type: dict (key-value pairs)
+- Set Types: set, frozenset
+Example:
+my_list = [1, 2, 3]
+my_tuple = (1, 2, 3)
+my_dict = {"name": "Alice", "age": 30}
+my_set = {1, 2, 3}
+
+4. How to Create a Function in Python:
+Functions are defined using the 'def' keyword.
+Example:
+def sum_numbers(a, b):
+    return a + b
+result = sum_numbers(5, 3)
+print(result)  # Output: 8
+
+5. Difference Between Tuple and List:
+- Tuple: Immutable and uses parentheses () 
+- List: Mutable and uses square brackets []
+Example:
+my_tuple = (1, 2, 3)
+my_list = [1, 2, 3]
+# my_tuple[0] = 10  # This would raise an error
+
+6. List Comprehensions:
+List comprehensions offer a concise way to create lists.
+Example:
+students = {"student_1": "Erico", "student_2": "John"}
+student_names = [name for key, name in students.items()]
+print(student_names)  # Output: ['Erico', 'John']
+
+7. Difference Between '==' and 'is':
+- '==' checks value equality.
+- 'is' checks object identity (whether both point to the same memory location).
+Example:
+a = [1, 2]
+b = [1, 2]
+print(a == b)  # True (same content)
+print(a is b)  # False (different objects)
+
+8. Lambda Functions:
+Lambda functions are anonymous functions defined in a single line.
+Example:
+add = lambda x, y: x + y
+print(add(5, 4))  # Output: 9
+
+9. Exception Handling:
+Python uses try-except blocks for error handling. You can also use else and finally.
+Example:
+def get_second_value(test_list):
+    try:
+        second_value = test_list[1]
+    except IndexError:
+        print("Second item not found.")
+    except TypeError:
+        print(f"Invalid type: {type(test_list)}")
+    else:
+        print(f"Second value: {second_value}")
+    finally:
+        print("Operation complete.")
+get_second_value([10, 20])
+
+10. Decorators:
+Decorators allow you to wrap one function around another.
+Example:
+def my_decorator(func):
+    def wrapper():
+        print("Starting function...")
+        func()
+        print("Function ended.")
+    return wrapper
+@my_decorator
+def say_hello():
+    print("Hello!")
+say_hello()
+
+11. What is the global interpreter lock (GIL) in Python?
+The global interpreter lock (GIL) is a mutex that protects access to Python objects, 
+preventing multiple threads from executing Python bytecodes concurrently in the same 
+process. This lock is mandatory because CPython's memory management is not thread-safe. 
+GIL has some advantages, including the increased performance of single-threaded programs 
+and the ability to easily integrate non-thread-safe C libraries into Python code. However, 
+the GIL can limit the performance of CPU-bound and multithreaded programs in Python.
+
+14. What is the difference between `*args` and `**kwargs` in Python?
+`*args` and `**kwargs` are special syntax in Python for passing a variable number of 
+arguments to a function. `*args` is used to pass a variable number of non-keyword 
+(positional) arguments, while `**kwargs` is used to pass a variable number of keyword 
+arguments. For example:
+
+def my_function(*args, **kwargs):
+    for arg in args:
+        print(arg)
+    for key, value in kwargs.items():
+        print(f"{key} = {value}")
+
+16. What is the difference between shallow and deep copying in Python?
+Shallow copying creates a new object and inserts references to the original elements. Deep 
+copying creates a new object and recursively inserts copies of the original elements. The 
+`copy` module provides the `copy()` function for shallow copying and the `deepcopy()` 
+function for deep copying.
+
+Q7: Explain the difference between deepcopy and copy in Python with a nested list example.
+
+The main difference between a copy and a deepcopy is related to how those two copies are
+handled on the computers memory. While a copy (shallow copy) will refer to the same space
+in memory, a deepcopy will actually create a new object in the memory completely decoupled
+from the original object.
+
+PS: shallow_copy only works with top level memory, not nested objects
+
+import copy
+
+original_list = [1, [2, 3, 4], 6, 7]
+
+shallow_copy = original_list.copy()
+shallow_copy[1].append(5)
+print(f"Shallow copy: {shallow_copy}")
+print(f"Original copy: {original_list}")
+
+deep_copy = copy.deepcopy(original_list)
+deep_copy[1].append(10)
+print(f"Deep copy: {deep_copy}")
+print(f"Original copy: {original_list}")
+
+18. What is the difference between `__str__` and `__repr__` in Python?
+`__str__` and `__repr__` are special methods in Python that define human-readable and 
+unambiguous string representations of an object, respectively. Typically, __str__ is 
+regarded as "user-oriented" and __repr__ is regarded as "programmer-oriented". 
+The `__str__` method is called by the `str()` function and the `print()` function, while 
+the `__repr__` method is called by the `repr()` function and the interactive interpreter. 
+If `__str__` is not defined for a class, Python will use `__repr__` as a fallback. Example:
+
+20. What is the difference between `staticmethod`, `classmethod`, and instance methods in Python?
+`staticmethod`: A static method is a method that belongs to a class rather than an instance of the class. It does not have access to instance or class variables and is defined using the `@staticmethod` decorator.
+`classmethod`: A class method is a method that belongs to a class and has access to class variables. It takes a reference to the class as its first argument and is defined using the `@classmethod` decorator.
+Instance method: An instance method is a method that belongs to an instance of a class and has access to instance variables. It takes a reference to the instance as its first argument (usually named `self`).
+
+21. What is the difference between `__new__` and `__init__` in Python?
+`__new__` and `__init__` are special methods in Python that are involved in the object creation process. `__new__` is responsible for creating and returning a new instance of the class, while `__init__` is responsible for initializing the instance after it has been created. At the beginning the `__new__` method is called and then `__init__` is called. In most cases, you only need to override `__init__`.
+
+
+Python Interview Study Guide - Day Two
+22. Purpose of __call__ Method:
+The '__call__' method allows an instance of a class to be called like a regular function.
+It  can  be  useful  for  scenarios  where  you  want  an  object  to  have  a  callable  behavior  while
+maintaining state.
+Example:
+class Adder:
+    def __init__(self, value):
+        self.value = value
+    
+    def __call__(self, x):
+        return self.value + x
+add_five = Adder(5)
+print(add_five(10))  # Output: 15
+print(add_five(20))  # Output: 25
+
+23. Purpose of __slots__:
+The  '__slots__'  attribute  limits  the  attributes  an  object  can  have  and  prevents  the  creation  of  a
+dynamic __dict__. 
+This saves memory, especially in large numbers of instances.
+Example:
+class Person:
+    __slots__ = ['name', 'age']
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+24. Difference between iter() and next():
+- iter(): Converts an iterable (like a list) into an iterator.
+- next(): Retrieves the next item from an iterator.
+Example:
+my_list = [1, 2, 3]
+my_iterator = iter(my_list)
+print(next(my_iterator))  # 1
+print(next(my_iterator))  # 2
+print(next(my_iterator))  # 3
+try:
+    print(next(my_iterator))
+except StopIteration:
+    print("End of iteration")
+
+    25. What is the purpose of the `collections` module in Python?
+The `collections` module provides specialized container datatypes that can be used as alternatives to the built-in containers (list, tuple, dict, and set). Some of the most commonly used classes in the `collections` module are `namedtuple`, `deque`, `Counter`, `OrderedDict`, and `defaultdict`.
+
+26. What is the purpose of the `functools` module in Python?
+The `functools` module provides higher-order functions and tools for working with functions and other callable objects. Some of the most commonly used functions in the `functools` module are `partial`, `reduce`, `lru_cache`, `total_ordering`, and `wraps`.
+
+27. What is the purpose of the `itertools` module in Python?
+The `itertools` module provides a collection of fast, memory-efficient tools for working with iterators. Some of the most commonly used functions in the `itertools` module are `count`, `cycle`, `repeat`, `chain`, `compress`, `dropwhile`, `takewhile`, `groupby`, and `zip_longest`.
+
+28. What is the purpose of the `os` and `sys` modules in Python?
+The `os` module provides a way to interact with the operating system, such as file and directory management, process management, and environment variables. The `sys` module provides access to Python's runtime environment, such as command-line arguments, the Python path, and the standard input, output, and error streams.
+
+29. What is the purpose of the `pickle` module in Python?
+The `pickle` module is used for serializing and deserializing Python objects, allowing you to save and load objects to and from disk. The `pickle` module provides the `dump()` and `load()` functions for writing and reading pickled objects, respectively.
+
+30. What is the purpose of the `re` module in Python?
+The `re` module supports regular expressions in Python, allowing you to search, match, and manipulate strings based on patterns. Some of the most commonly used functions in the `re` module are `match`, `search`, `findall`, `finditer`, `sub`, and `split`.
+
+31. threading vs multiprocessing:
+- threading: Runs multiple threads on the same core (due to GIL). Good for I/O-bound tasks.
+- multiprocessing: Runs separate processes on different cores. Suitable for CPU-bound tasks.
+Example:
+import threading
+import multiprocessing
+def print_numbers():
+    for i in range(5):
+        print(i)
+# Threading
+t = threading.Thread(target=print_numbers)
+t.start()
+# Multiprocessing
+p = multiprocessing.Process(target=print_numbers)
+p.start()
+
+34. Merging Two Dictionaries:
+You can merge using dictionary unpacking:
+dict_1 = {"a": 1, "b": 2}
+dict_2 = {"b": 3, "c": 4}
+merged_dict = {**dict_1, **dict_2}
+print(merged_dict)  # Output: {'a': 1, 'b': 3, 'c': 4}
+
+33. How would you find the most common elements in a list?
+You can use the `collections.Counter` class to count the occurrences of elements in the list and then use the `most_common()` method to find the most common elements:
+
+from collections import Counter
+
+my_list = [1, 2, 3, 4, 4, 5, 5, 7]
+counter = Counter(my_list)
+
+most_common_elements = counter.most_common()
+
+
+35. Removing Duplicates While Preserving Order:
+You can use a set to track seen elements while iterating through the list.
+def unique_list(test_list):
+    seen = set()
+    result = []
+    for n in test_list:
+        if n not in seen:
+            seen.add(n)
+            result.append(n)
+    return result
+print(unique_list([1, 1, 4, 3, 5, 6, 7]))
+
+37. Finding Intersection of Two Lists:
+Using set lookup for efficiency:
+def find_intersection(list_1, list_2):
+    set_2 = set(list_2)
+    return [item for item in list_1 if item in set_2]
+list_1 = [1, 2, 3, 4]
+list_2 = [3, 4, 5, 6]
+print(find_intersection(list_1, list_2))  # Output: [3, 4]
+
+Question 38: How would you sort a list of dictionaries by a specific key?
+You  can  sort  a  list  of  dictionaries  using  the  `sort()`  method  or  the  built-in  `sorted()`  function.  The  `key`
+parameter accepts a function that extracts the comparison key from each dictionary.
+test_list = [
+    {"name": "erico"},
+    {"name": "antonio"}
+]
+key = "name"
+def sort_list_by_dict_key(test_list: list[dict], key):
+    test_list.sort(key=lambda x: x[key])
+    return test_list
+print(sort_list_by_dict_key(test_list, key))
+
+Question 40: How would you implement a retry mechanism for a function that might fail?
+A  retry  mechanism  is  used  to  attempt  a  function  multiple  times  before  failing.  It's  useful  when  dealing  with
+unreliable  operations  like  network  requests.  You  can  implement  it  using  a  decorator  that  wraps  the  target
+function.
+import time
+def retry_decorator(max_retries, delay):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            for attempt in range(max_retries):
+                try:
+                    return func(*args, **kwargs)
+                except Exception as err:
+                    if attempt == max_retries - 1:
+                        raise err
+                    time.sleep(delay)
+        return wrapper
+    return decorator
+    
+@retry_decorator(max_retries=3, delay=1)
+def fail_function():
+    return 3 / 0
+print(fail_function())
+
+Question 41: How would you implement a simple rate limiter for a function in Python?
+A  rate  limiter  restricts  how  often  a  function  can  be  called.  This  can  be  implemented  using  a  decorator  that
+tracks the time between calls and enforces a wait if needed.
+import time
+def rate_limiter(calls_per_second):
+    interval = 1 / calls_per_second
+    last_call_time = [0]
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            elapsed_time = time.time() - last_call_time[0]
+            if elapsed_time < interval:
+                print("Rate limit exceeded")
+                time.sleep(interval - elapsed_time)
+            last_call_time[0] = time.time()
+            return func(*args, **kwargs)
+        return wrapper
+    return decorator
+
+Question 42: How would you flatten a nested list in Python?
+Flattening  a  nested  list  involves  converting  a  list  that  contains  other  lists  into  a  single-level  list.  This  can  be
+done recursively by checking each item and extending the result if it is a list.
+test_list = [
+    1,
+    [1, 2, [1, 2]],
+    [1, 2, 3]
+]
+def flatten_list(test_list):
+    flattened_list = []
+    for item in test_list:
+        if isinstance(item, list):
+            flattened_list.extend(flatten_list(item))
+        else:
+            flattened_list.append(item)
+    return flattened_list
+print(flatten_list(test_list))
+
+Q1.  What  is  an  abstract  class,  and  how  does  it  differ  from  other  classes  in  object-oriented
+programming?
+An  abstract  class  is  an  object-oriented  programming  construct  that  enables  developers  to  create  a  base  or
+parent  class  from  which  other  child  classes  may  inherit  specific  attributes  and  methods.  Unlike  regular
+classes,  the  members  of  an  abstract  class  cannot  be  instantiated  and  are  typically  used  as  templates
+containing generic implementation details for use by its derived subclasses.
+
+Q3. How do you define a programming language as dynamic rather than static?
+A programming language is said to be dynamic when a program can be modified during its running and can
+modify  other  components  at  runtime,  avoiding  the  need  for  recompiling  or  redeploying  an  application  every
+time  changes  are  made.  This  eliminates  static  languages  requiring  data  types  of  variables  to  be  declared
+beforehand.
+
+Q5. What are some key features that characterize object-oriented programming?
+Key features of Object-Oriented Programming include Encapsulation, Inheritance, and Polymorphism.
+Benefits  include  increasing  code  abstraction  modularity,  enhanced  reusability  of  classes,  and  customized
+user implementation. OOP is widely used in modern software development.
+
+Q6.  What  is  an  abstract  method,  and  when  would  it  typically  be  used  during  software
+development projects utilizing OOP principles?
+An  abstract  method  is  a  declaration  found  only  in  classes  defined  as  abstract,  meaning  they  cannot  be
+instantiated.  These  methods  have  no  implementation  and  must  be  implemented  in  subclasses.  They  are
+used to enforce a contract or interface in object-oriented systems.
+
+Q8. What is EPAM Systems?
+EPAM Systems is a global product development and software engineering solutions provider. It has delivery
+centers in Europe, the US, Canada, the UK, Germany, and Japan. EPAM provides digital platform
+engineering and development services for global companies, leveraging technologies like AI, cloud, and data
+science.
+
+Q9. How does EPAM Systems contribute to product-based companies?
+EPAM  helps  product-based  companies  by  offering  tools  and  processes  to  solve  business  challenges  and
+strategize for the future. It improves operational agility, reduces costs, and enhances product reliability using
+engineering best practices.
+
+Q11.  How  can  real-life  examples  be  incorporated  into  developing  solutions  with  EPAM
+Systems?
+Real-life examples such as case studies or analogies can demonstrate how similar problems were solved in
+the past. These examples help in identifying effective strategies and potential pitfalls early in the development
+process.
+
+Q17.  What  is  a  class  abstract,  and  how  does  it  relate  to  the  default  constructors  of  a
+program/application?
+An  abstract  class  serves  as  a  blueprint  for  subclasses  and  cannot  be  instantiated.  It  may  contain  both
+abstract and non-abstract methods. Abstract classes can also define default constructors like regular classes,
+though abstractness does not affect constructor behavior directly.
+---
+
+# 📘 SOLID Principles in Python
+
+## S — Single Responsibility Principle (SRP)
+
+> A class should have one and only one reason to change.
+
+**Analogy**: Imagine a restaurant where a chef is not only cooking but also cleaning the floor and serving food. The food quality would suffer. Similarly, in code, each class or method should do one thing and do it well.
+
+**Key Concept**: One class → One responsibility.
+
+---
+
+## O — Open/Closed Principle (OCP)
+
+> Software entities (classes, modules, functions) should be open for extension but closed for modification.
+
+### ✅ Good Example
+
+```python
+from abc import ABC, abstractmethod
+
+class PaymentProcessor(ABC):
+    @abstractmethod
+    def process_payment(self):
+        pass
+
+class CreditCardPayment(PaymentProcessor):
+    def process_payment(self):
+        print("Processing credit card payment")
+
+class PayPalPayment(PaymentProcessor):
+    def process_payment(self):
+        print("Processing PayPal payment")
+```
+
+This allows you to add new payment types without changing the core logic.
+
+---
+
+## L — Liskov Substitution Principle (LSP)
+
+> Subtypes must be substitutable for their base types without altering the correctness of the program.
+
+### ❌ Broken LSP Example
+
+```python
+class Rectangle:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def set_width(self, width):
+        self.width = width
+
+    def set_height(self, height):
+        self.height = height
+
+    def calc_area(self):
+        return self.width * self.height
+
+class Square(Rectangle):
+    def set_width(self, width):
+        self.width = self.height = width
+
+    def set_height(self, height):
+        self.height = self.width = height
+
+def resize_and_print_area(rect):
+    rect.set_width(10)
+    rect.set_height(5)
+    print(f"Area: {rect.calc_area()}")
+
+resize_and_print_area(Rectangle(2, 3))  # OK
+resize_and_print_area(Square(2, 3))     # Broken logic!
+```
+
+`Square` violates LSP because it overrides behavior in a way that changes the expected output.
+
+---
+
+## I — Interface Segregation Principle (ISP)
+
+> No client should be forced to depend on methods it does not use.
+
+**Analogy**: A vegetarian customer at a restaurant shouldn't be handed a menu with meat and drinks. Instead, tailor interfaces to specific clients.
+
+**Key Concept**: Prefer many small, specific interfaces over one large, general-purpose interface.
+
+---
+
+## D — Dependency Inversion Principle (DIP)
+
+> High-level modules should not depend on low-level modules. Both should depend on abstractions.
+
+### ✅ Good Example
+
+```python
+from abc import ABC, abstractmethod
+
+class IDataBase(ABC):
+    @abstractmethod
+    def create_connection(self):
+        pass
+
+    @abstractmethod
+    def store_data(self, data):
+        pass
+
+class PostgresDataBase(IDataBase):
+    def create_connection(self):
+        print("Connected to Postgres")
+
+    def store_data(self, data):
+        print(f"Stored to Postgres: {data}")
+
+class MySqlDataBase(IDataBase):
+    def create_connection(self):
+        print("Connected to MySQL")
+
+    def store_data(self, data):
+        print(f"Stored to MySQL: {data}")
+
+class DataConsumer:
+    def __init__(self, db: IDataBase):
+        self.db = db
+
+    def insert_data_to_db(self, data):
+        self.db.store_data(data)
+
+# Usage
+consumer1 = DataConsumer(MySqlDataBase())
+consumer2 = DataConsumer(PostgresDataBase())
+
+data = {"instrument": "BTC", "price": 100000}
+consumer1.insert_data_to_db(data)
+consumer2.insert_data_to_db(data)
+```
+
+The `DataConsumer` class depends on the interface (`IDataBase`) and not the specific implementation.
+
+---
+
+### ✅ Summary Table
+
+| Principle | Keyword        | Description                                               |
+| --------- | -------------- | --------------------------------------------------------- |
+| **S**     | Responsibility | One reason to change; one job per class                   |
+| **O**     | Extensibility  | Extend without modifying existing code                    |
+| **L**     | Replaceability | Child classes should honor the contract of parent classes |
+| **I**     | Specificity    | Avoid fat interfaces; prefer smaller ones                 |
+| **D**     | Abstraction    | High-level code shouldn’t depend on low-level code        |
+
+---
+
+Here's a clean, professional summary of **questions 46 and 47**, ready for inclusion in a document or PDF:
+
+
+### ❓ **Question 46: How would you find the first non-repeated character in a string?**
+
+#### ✅ Method 1: Using `OrderedDict`
+
+```python
+from collections import OrderedDict
+
+def first_non_repeated_char_dict(string: str):
+    count = OrderedDict()
+    for char in string:
+        count[char] = count.get(char, 0) + 1
+    for char, freq in count.items():
+        if freq == 1:
+            return char
+    return None
+
+# Example
+print(first_non_repeated_char_dict("abracadabra"))  # Output: 'c'
+```
+
+#### ✅ Method 2: Using two lists (less efficient but intuitive)
+
+```python
+def first_non_repeated_char(string: str):
+    repeated = []
+    non_repeated = []
+    for char in string:
+        if char in repeated:
+            continue
+        elif char not in non_repeated:
+            non_repeated.append(char)
+        else:
+            non_repeated.remove(char)
+            repeated.append(char)
+    return non_repeated[0] if non_repeated else None
+
+# Example
+print(first_non_repeated_char("abracadabra"))  # Output: 'c'
+```
+
+---
+
+### ❓ **Question 47: How would you implement a simple LRU Cache in Python?**
+
+#### ✅ Using `collections.OrderedDict`
+
+```python
+from collections import OrderedDict
+
+class LRUCache:
+    def __init__(self, capacity: int):
+        self.cache = OrderedDict()
+        self.capacity = capacity
+
+    def get(self, key):
+        if key in self.cache:
+            self.cache.move_to_end(key)  # Mark as recently used
+            return self.cache[key]
+        return -1
+
+    def put(self, key, value):
+        if key in self.cache:
+            self.cache.move_to_end(key)
+        self.cache[key] = value
+        if len(self.cache) > self.capacity:
+            self.cache.popitem(last=False)  # Remove least recently used
+```
+
+#### 🧪 Example Usage:
+
+```python
+lru = LRUCache(capacity=2)
+lru.put(1, 100)
+lru.put(2, 200)
+print(lru.get(1))  # Output: 100
+lru.put(3, 300)    # Evicts key 2
+print(lru.get(2))  # Output: -1
+```
+
+**Key Concepts**:
+
+* `OrderedDict` maintains the order of insertion.
+* Recently accessed keys are moved to the end.
+* When capacity is exceeded, the first (least recently used) item is removed.
+
+---
+
+Let me know if you'd like a downloadable version of this as a PDF or DOCX!
