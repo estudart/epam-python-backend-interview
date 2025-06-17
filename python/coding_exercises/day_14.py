@@ -90,12 +90,39 @@ print(hights_list)
 
 5. **What’s the difference between mutable and immutable objects in Python? Give examples.**
 
+Mutable objects are objects in which you can updated items within the object, an example of
+so would be dictionaries and list in python.
+In the other hand immutable objects are those that cant be changed once you insert a value on
+it, in python a good example of immutable objects are lists
 
 6. **How does Python manage memory for objects?**
 
 7. **Explain what a decorator is and give a practical use case for it.**
+A decorator is a method that can be called as default before or after a function is called in
+python. A practical use case for it would be to implement a decorator with retry logic.
+
+import time
+
+def retry_decorator(max_retries, delay_time):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            for attempt in range(max_retries + 1):
+                try:
+                    return func(*args, **kwargs)
+                except Exception as err:
+                    print(f"Could not run function, reason: {err}")
+                time.sleep(delay_time)
+        return wrapper
+    return decorator
 
 8. **What is dependency injection and how would you implement a simple example of it in Python?**
+
+Depency injection is a techinique used in software development in which classes should not depend on
+another especif class on your application, having this in mind, your code can be fully decoupled. If
+for some reason the class needs another dependency in the future, you need to do minor updates in the code
+A good example of it could be connection with databases, in this scenario is possible to create an interface
+responsbile for hadling database connection especifying the methods needed to implement. Then, in the
+future is super simple to migrate your code from one especific database to another.
 
 ---
 
@@ -104,7 +131,12 @@ print(hights_list)
 9. **If you were building a REST API for a book store, what would be your typical REST 
 endpoints (CRUD)?**
 
+POST /book, /book-store
+GET /book, /book-store
+
 10. **What’s the difference between PUT and PATCH in REST APIs?**
+
+PUT update the entire object while PATCH updates only specific attributes of a given object.
 
 11. **How would you handle validation and error responses in a FastAPI or Flask API?**
 
@@ -119,6 +151,21 @@ endpoints (CRUD)?**
 13. **Given a list of integers, find the most frequent element.**
 
 (→ Expected thinking: Use `collections.Counter` or dict to count frequencies)
+
+list_to_count = [1, 2, 4, 3, 3, 3, 6, 7, 7]
+
+def list_freq(list_to_count):
+    freq_dict = {}
+
+    for num in list_to_count:
+        if not freq_dict.get(num):
+            freq_dict[num] = 1
+        else:
+            freq_dict[num] += 1
+    
+    print(max(freq_dict.values()))
+
+list_freq(list_to_count)
 
 ---
 
@@ -180,4 +227,5 @@ Or… I can help you write answers for each one (to rehearse).
 * Or I pick random 5-7 and quiz you?
 
 """
+
 
