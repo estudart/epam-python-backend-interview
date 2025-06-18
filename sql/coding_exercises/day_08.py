@@ -25,8 +25,8 @@ INSERT INTO sales (sale_id, sale_date, product_id, unit_price, quantity) VALUES
 -- QUERY database
 SELECT 
 	EXTRACT(MONTH FROM sale_date) AS month,
-    product_id,
-    SUM(unit_price * quantity) AS total_revenue
+  product_id,
+  SUM(unit_price * quantity) AS total_revenue
 FROM 
 	sales
 GROUP BY
