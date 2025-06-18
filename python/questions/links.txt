@@ -3,3 +3,4 @@ https://www.glassdoor.com.br/Interview/EPAM-Systems-Python-Developer-Interview-Q
 https://www.glassdoor.com.br/Interview/EPAM-Systems-Senior-Python-Developer-Interview-Questions-EI_IE15544.0,12_KO13,36.htm?countryRedirect=true
 https://www.digitalocean.com/community/conceptual-articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design
 https://www.geeksforgeeks.org/solid-principle-in-programming-understand-with-real-life-examples/
+https://www.youtube.com/watch?v=XVcRQ6T9RHo
